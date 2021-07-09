@@ -76,7 +76,26 @@ function nwscorematrix(seq1, seq2; match=1, mismatch=-1, gap=-1)
             left = nwscore(nothing, seq2[j-1]; match, mismatch, gap) + scoremat[i,j-1]
             diagonal = nwscore(seq1[i-1], seq2[j-1]; match, mismatch, gap) + scoremat[i-1,j-1]
             scoremat[i,j] = max(above, left, diagonal)
+            if scoremat[i,j] == above 
+                println("above")
+            elseif scoremat[i,j] == diagonal
+                println("diagonal")
+            elseif scoremat[i,j] == left
+                println("left")
+            end 
         end
     end
     return scoremat
 end
+
+function nwalignment(scoremat)
+    for i in i:size(scoremat,1)
+        for j in j:size(scoremat,2)
+            if diagonal 
+                alignment=match || mismatch
+            elseif above || left
+                alignment = gap
+            end
+        end
+    end
+end 
